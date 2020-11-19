@@ -8,6 +8,11 @@ main =
   div [ class "main-container" ]
   [ div [ class "left" ] 
     [ div [ id "menu-title" ] [ text "Menu" ]
+
+    -- TODO: Add expand class on click for (+)
+    -- TODO: Add "visible" tag on click (+)
+    -- TODO: Add hover properties for menu items
+    , div [ id "preprocessor" ] [ text "(+) Preprocessor" ] 
     ]
 
   , div [ class "right" ] 

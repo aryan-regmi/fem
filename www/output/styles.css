@@ -59,3 +59,27 @@ html, body {
   font-size: 2rem;
   font-family: 'Dekko';
 }
+
+#preprocessor {
+  text-align: center;
+  font-weight: bold;
+  border-style: groove;
+  border-color: rgb(80, 77, 77);
+  padding-top: .5%;
+  padding-bottom: 0%;
+  background-color: rgb(111, 192, 224);
+  font-size: 2rem;
+  font-family: 'Dekko';
+}
+
+.expand {
+  text-align: center;
+  font-weight: bold;
+  border-style: groove;
+  border-color: rgb(80, 77, 77);
+  padding-top: .5%;
+  padding-bottom: 0%;
+  background-color: rgb(76, 167, 202);
+  font-size: 2rem;
+  font-family: 'Dekko';
+}
