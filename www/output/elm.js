@@ -4415,8 +4415,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$main = A2(
@@ -4450,11 +4448,44 @@ var $author$project$Main$main = A2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$id('preprocessor'),
-							A2($elm$html$Html$Attributes$style, 'visibility', 'hidden')
+							$elm$html$Html$Attributes$class('menu-item')
 						]),
 					_List_fromArray(
 						[
 							$elm$html$Html$text('(+) Preprocessor')
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$id('solution'),
+							$elm$html$Html$Attributes$class('menu-item')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('(+) Solution')
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$id('postprocessor'),
+							$elm$html$Html$Attributes$class('menu-item')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('(+) Postprocessor')
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$id('save'),
+							$elm$html$Html$Attributes$class('menu-item')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Save')
 						]))
 				])),
 			A2(

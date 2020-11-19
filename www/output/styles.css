@@ -60,7 +60,7 @@ html, body {
   font-family: 'Dekko';
 }
 
-#preprocessor {
+.menu-item {
   text-align: center;
   font-weight: bold;
   border-style: groove;

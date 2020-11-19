@@ -2,6 +2,8 @@ module Main exposing(..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Browser
+import Browser.Navigation as Nav
 
 main : Html msg
 main = 
@@ -12,7 +14,11 @@ main =
     -- TODO: Add expand class on click for (+)
     -- TODO: Add "visible" tag on click (+)
     -- TODO: Add hover properties for menu items
-    , div [ id "preprocessor" ] [ text "(+) Preprocessor" ] 
+    -- TODO: Add expanded menu items in order
+    , div [ id "preprocessor", class "menu-item" ] [ text "(+) Preprocessor" ] 
+    , div [ id "solution", class "menu-item" ] [ text "(+) Solution" ]
+    , div [ id "postprocessor", class "menu-item" ] [ text "(+) Postprocessor" ]
+    , div [ id "save", class "menu-item" ] [ text "Save" ]
     ]
 
   , div [ class "right" ] 
