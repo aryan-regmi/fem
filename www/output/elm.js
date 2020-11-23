@@ -5144,14 +5144,15 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Main$Model = function (val) {
-	return {val: val};
-};
+var $author$project$Main$Model = F3(
+	function (mat_vis, expand_class, mat_prop) {
+		return {expand_class: expand_class, mat_prop: mat_prop, mat_vis: mat_vis};
+	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		$author$project$Main$Model(1),
+		A3($author$project$Main$Model, 'none', '', 'none'),
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5161,8 +5162,38 @@ var $author$project$Main$subscriptions = function (model) {
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+		if (msg.$ === 'ExpandPre') {
+			return (model.mat_vis === 'none') ? _Utils_Tuple2(
+				_Utils_update(
+					model,
+					{expand_class: 'expand', mat_vis: 'block'}),
+				$elm$core$Platform$Cmd$none) : _Utils_Tuple2(
+				_Utils_update(
+					model,
+					{expand_class: '', mat_vis: 'none'}),
+				$elm$core$Platform$Cmd$none);
+		} else {
+			var _v1 = model.mat_prop;
+			switch (_v1) {
+				case 'none':
+					return _Utils_Tuple2(
+						_Utils_update(
+							model,
+							{mat_prop: 'block'}),
+						$elm$core$Platform$Cmd$none);
+				case 'block':
+					return _Utils_Tuple2(
+						_Utils_update(
+							model,
+							{mat_prop: 'none'}),
+						$elm$core$Platform$Cmd$none);
+				default:
+					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+			}
+		}
 	});
+var $author$project$Main$ExpandPre = {$: 'ExpandPre'};
+var $author$project$Main$MatProps = {$: 'MatProps'};
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5171,115 +5202,249 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			$elm$json$Json$Encode$string(string));
 	});
+var $elm$html$Html$Attributes$action = function (uri) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'action',
+		_VirtualDom_noJavaScriptUri(uri));
+};
+var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
+var $elm$html$Html$form = _VirtualDom_node('form');
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
+var $elm$html$Html$Attributes$method = $elm$html$Html$Attributes$stringProperty('method');
+var $elm$html$Html$Attributes$name = $elm$html$Html$Attributes$stringProperty('name');
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$main_page = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('main-container')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('left')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('menu-title')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Menu')
-						])),
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('preprocessor'),
-							$elm$html$Html$Attributes$class('menu-item')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('(+) Preprocessor')
-						])),
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('mat-props'),
-							$elm$html$Html$Attributes$class('menu-item')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('(+) Material Properties')
-						])),
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('solution'),
-							$elm$html$Html$Attributes$class('menu-item')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('(+) Solution')
-						])),
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('postprocessor'),
-							$elm$html$Html$Attributes$class('menu-item')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('(+) Postprocessor')
-						])),
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('save'),
-							$elm$html$Html$Attributes$class('menu-item')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Save')
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('right')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('fem-title')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('FEM ANALYSIS')
-						]))
-				]))
-		]));
+var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
+var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
+var $author$project$Main$main_page = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('main-container')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('left')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('menu-title')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Menu')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('preprocessor'),
+								$elm$html$Html$Attributes$class('menu-item'),
+								$elm$html$Html$Attributes$class(model.expand_class)
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$id('preprocessor'),
+										$elm$html$Html$Attributes$class('menu-item'),
+										A2($elm$html$Html$Attributes$style, 'border-style', 'none'),
+										$elm$html$Html$Events$onClick($author$project$Main$ExpandPre),
+										$elm$html$Html$Attributes$class(model.expand_class)
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('(+) Preprocessor')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('mat-props'),
+								$elm$html$Html$Attributes$class('menu-item'),
+								A2($elm$html$Html$Attributes$style, 'display', model.mat_vis)
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$id('mat-prop-but'),
+										$elm$html$Html$Attributes$class('menu-item'),
+										A2($elm$html$Html$Attributes$style, 'border', 'none'),
+										$elm$html$Html$Events$onClick($author$project$Main$MatProps)
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('(+) Material Properties')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('solution'),
+								$elm$html$Html$Attributes$class('menu-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('(+) Solution')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('postprocessor'),
+								$elm$html$Html$Attributes$class('menu-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('(+) Postprocessor')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('save'),
+								$elm$html$Html$Attributes$class('menu-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Save')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('right')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('fem-title')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('FEM ANALYSIS')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$id('form-cont'),
+								A2($elm$html$Html$Attributes$style, 'display', model.mat_prop)
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$form,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$id('matprop_form'),
+										$elm$html$Html$Attributes$action('http://localhost:8000/api/mat_mod'),
+										$elm$html$Html$Attributes$method('post')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$label,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$for('youngs-mod')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Young\'s Modulus')
+											])),
+										A2(
+										$elm$html$Html$input,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$type_('number'),
+												$elm$html$Html$Attributes$id('youngs-mod'),
+												$elm$html$Html$Attributes$name('youngs-mod')
+											]),
+										_List_Nil),
+										A2($elm$html$Html$br, _List_Nil, _List_Nil),
+										A2(
+										$elm$html$Html$label,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$for('possion')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('Possion\'s Ratio')
+											])),
+										A2(
+										$elm$html$Html$input,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$type_('number'),
+												$elm$html$Html$Attributes$id('possion'),
+												$elm$html$Html$Attributes$name('possion')
+											]),
+										_List_Nil),
+										A2($elm$html$Html$br, _List_Nil, _List_Nil),
+										A2(
+										$elm$html$Html$input,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$type_('submit'),
+												$elm$html$Html$Attributes$value('Submit'),
+												$elm$html$Html$Attributes$id('mat-submit')
+											]),
+										_List_Nil)
+									]))
+							]))
+					]))
+			]));
+};
 var $author$project$Main$view = function (model) {
-	return $author$project$Main$main_page;
+	return $author$project$Main$main_page(model);
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
